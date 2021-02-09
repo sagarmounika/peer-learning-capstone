@@ -1,11 +1,8 @@
 .user {
   background-color: var(--secondary);
-  height: 90vh;
-  /* overflow: hidden !important; */
+  /* height: 90vh; */
   margin-top: 30px;
   margin-bottom: 20px;
-
-  /* color: var(--secondary); */
 }
 
 .user h3 {
@@ -15,14 +12,10 @@
 .user_left {
   background-image: url(https://images.unsplash.com/photo-1530305408560-82d13781b33a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80);
   color: var(--secondary);
-  /* height: 500px; */
-  /* height: 100%; */
   color: var(--secondary);
-  /* object-fit: contain; */
   display: flex;
   flex-direction: column;
   text-transform: capitalize;
-  /* flex-wrap: nowrap; */
   align-items: center;
   justify-content: center;
   padding: 2rem;
@@ -43,22 +36,41 @@ hr {
   background-color: var(--primary) !important;
   margin: 2px !important;
 }
-.user .btn {
+.user .btn_back
+{
   border-color: var(--primary) !important;
   /* width: 90px; */
   background-color: var(--secondary) !important;
   color: var(--primary) !important;
   text-decoration: none !important;
-  /* font-weight: 600!important; */
   margin-bottom: 12px;
+  margin-left:10px;
+}
+.user_btns{
+  display: flex;
+  justify-content:space-between;
+  align-items:center;
+ 
+
+}
+.btn_delete{
+  border-color:red!important;
+  background-color: var(--secondary) !important;
+  color: red !important;
+  text-decoration: none !important;
+  margin-bottom: 12px;
+  margin-right:10px;
+  border:3px solid red;
+}
+.btn_delete:hover{
+  color: var(--secondary) !important;
+  background-color: red !important;
 }
 .user .btn:hover,
 .user .btn:focus,
 .user .btn:active {
-
   outline: none !important;
   color: var(--primary) !important;
- 
   box-shadow: none !important;
 }
 .user .btn a {

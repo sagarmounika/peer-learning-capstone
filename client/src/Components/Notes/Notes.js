@@ -22,7 +22,7 @@ function Notes() {
       },
     })
       .then((response) => {
-        console.log(response);
+ 
         setData(() => {
           setData(response.data);
         });
@@ -38,7 +38,6 @@ function Notes() {
   const OnClick = (title) => {
     setLoading(true);
     setTitle(title);
-    console.log(title);
     axios({
       method: 'get',
       url: `/resource/category/?q=${title}`,
@@ -48,7 +47,7 @@ function Notes() {
       },
     })
       .then((response) => {
-        console.log(response);
+      
         setData(() => {
           setData(response.data.Resources);
         });

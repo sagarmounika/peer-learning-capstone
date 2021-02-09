@@ -3,7 +3,7 @@ import AlertDismissible from './AlertDismissible';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './SignUp.css';
-import { Form, Button, Col, InputGroup } from 'react-bootstrap';
+import { Form, Button, Col, Alert } from 'react-bootstrap';
 
 function SignUp() {
   const [isRegistered, setIsRegistered] = useState(false);
@@ -11,12 +11,12 @@ function SignUp() {
   const [stateapi, setStateapi] = useState([]);
   const [phonecode, setPhonecode] = useState('');
   const [cityapi, setCityapi] = useState([]);
+  const [error, setError] = useState([]);
   const [show, setShow] = useState(true);
   const [formData, setFormData] = useState({
     firstname: '',
     middlename: '',
     lastname: '',
-    email: '',
     username: '',
     password: '',
     password2: '',
@@ -59,7 +59,6 @@ function SignUp() {
           'X-CSCAPI-KEY': 'b0NzelBwR204aDZmeWR0cEk4RzFscWlacjJMZUxMN1lhcEdUMFEydw==',
         },
       }).then((response) => {
-        console.log(response.data);
         setCountryapi(response.data);
       });
     } catch (err) {
@@ -110,7 +109,6 @@ function SignUp() {
           'X-CSCAPI-KEY': 'b0NzelBwR204aDZmeWR0cEk4RzFscWlacjJMZUxMN1lhcEdUMFEydw==',
         },
       }).then((response) => {
-        console.log(response.data);
         setPhonecode(response.data.phonecode);
       });
     } catch (err) {
@@ -140,6 +138,7 @@ function SignUp() {
       [e.target.name]: e.target.value,
     });
   };
+
   const signupSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
@@ -155,31 +154,29 @@ function SignUp() {
       insti_name: insti_name,
       insti_type: insti_type,
       gender: gender,
-      mobile: '+'+phonecode+mobile,
+      mobile: '+' + 91  + mobile,
       country: country,
       city: city,
       state: state,
       dob: dob,
     };
-    console.log(data);
-    // }
+
     await axios
       .post('/user', data)
       .then((response) => {
-        console.log(response);
-
         setIsRegistered(true);
         setShow(true);
       })
       .catch((err) => {
         const error = err.response.data.error;
-        //  error.map(err => err)
+        // setError(error);});
         alert(error.map((err) => err));
       });
   };
 
   return (
     <>
+      {/* {error && error.map((err) => <Alert variant="danger" className="alert">{err}</Alert>)} */}
       <div className="signUp">
         <Form onSubmit={signupSubmit}>
           <h2>Sign Up</h2>
@@ -289,9 +286,11 @@ function SignUp() {
                   type="text"
                   placeholder="Institue Type"
                   className="select"
+                  // value="insti_type"
                   name="insti_type"
                   onChange={onChange}
                 >
+                  <option hidden> Type Of Institue</option>
                   <option value="school">School</option>
                   <option value="college">College</option>
                   <option value="university">University</option>
@@ -388,18 +387,13 @@ function SignUp() {
           <Form.Row>
             <Col>
               <Form.Group>
-            
-                  {/* <InputGroup.Prepend>
-                    <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-                  </InputGroup.Prepend> */}
-                  <Form.Control
-                    type="text"
-                    placeholder="Mobile"
-                    name="mobile"
-                    value={mobile}
-                    onChange={onChange}
-                  />
-            
+                <Form.Control
+                  type="text"
+                  placeholder="10 Digit Mobile Number"
+                  name="mobile"
+                  value={mobile}
+                  onChange={onChange}
+                />
               </Form.Group>
             </Col>
             <Col>

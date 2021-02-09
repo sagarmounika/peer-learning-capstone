@@ -8,20 +8,11 @@
   overflow: hidden !important;
   height:90vh;
 }
-/* .body a {
-  display: block;
-  width: 50%;
-  text-decoration: none;
-  align-self: center;
-  text-align: center;
-  color: white;
-} */
+
 .body_notes,
 .body_discussion {
   height:90vh;
   cursor: pointer;
-
-  /* overflow-y: hidden; */
   background-color: var(--primary);
   color: var(--secondary);
   font-weight: 900;
@@ -31,16 +22,6 @@
   align-items: center;
   justify-content: center;
 }
-/* 
-.body_notes {
-  background-color: var(--primary);
-  color: var(--secondary);
-} */
-
-/* .body_notes:hover,
-.body_discussion:hover {
-  opacity: 0.8;
-} */
 .body_icon {
   font-size: 3rem !important;
 }

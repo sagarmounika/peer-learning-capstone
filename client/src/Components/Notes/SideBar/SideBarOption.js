@@ -1,10 +1,14 @@
 import React from 'react';
 import ArrowRightRoundedIcon from '@material-ui/icons/ArrowRightRounded';
-import './SideBarOption.css'
+import './SideBarOption.css';
 
-function SideBarOption({ Icon, title, id, OnClick, AllCategories, all }) {
+function SideBarOption({ title, OnClick, AllCategories, all }) {
   return (
-    <div onClick={all ? () => AllCategories() : () => OnClick(title)} className="sidebar_option" >
+    <div
+
+      onClick={all ? () => AllCategories() : () => OnClick(title)}
+      className="sidebar_option"
+    >
       <h5>
         {' '}
         <ArrowRightRoundedIcon />

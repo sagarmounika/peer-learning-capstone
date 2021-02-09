@@ -3,7 +3,6 @@ import axios from 'axios';
 import './SideBar.css';
 import SideBarOption from './SideBarOption.js';
 
-
 function Sidebar({ OnClick, AllCategories }) {
   const token = localStorage.getItem('token');
   const [categories, setCategories] = useState(['']);
@@ -20,14 +19,13 @@ function Sidebar({ OnClick, AllCategories }) {
       setCategories(response.data);
     });
   }, []);
-  console.log(categories);
+
   return (
     <div className="notes_sidebar">
-      <SideBarOption title="All Categories"  AllCategories={AllCategories} all key={98}/>
+      <SideBarOption title="All Categories" AllCategories={AllCategories} all key={98} />
       {categories.map((category) => (
-        <SideBarOption title={category.name} OnClick={OnClick}  key={category.id} />
+        <SideBarOption title={category.name} OnClick={OnClick} key={category.id} />
       ))}
-    
     </div>
   );
 }

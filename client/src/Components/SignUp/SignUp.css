@@ -1,7 +1,5 @@
 .signUp {
   width: 50%;
-  /* height: 85vh !important; */
-  /* overflow: hidden; */
   margin: 20px auto;
   border: 1px solid var(--secondary);
   padding: 1.5em;
@@ -72,6 +70,10 @@
   width: 60%;
   z-index: 9999;
   border-radius: 0px;
+}
+.alert{
+  width:80%!important;
+  margin:4px auto !important;
 }
 
 @media only screen and (max-width: 600px) {

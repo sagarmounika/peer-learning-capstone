@@ -2,15 +2,13 @@
   flex: 0 0 45%;
   margin: 10px;
   font-size: 1rem;
-  /* margin: 1rem; */
-  /* height: 600px; */
   box-shadow: 3px 3px 3px var(--primary);
   background-color: var(--primary);
   color: var(--secondary);
   font-family: 'Montserrat', sans-serif;
   border-radius: 10px;
   cursor: pointer;
-  /* margin:10px; */
+
 }
 .tooltip-inner {
   background-color: var(--primary);
@@ -28,14 +26,10 @@
 .copy-form input {
   flex: 0 0 80% !important;
   width: 80%;
-  /* background-color: gray; */
   padding: 3px;
   border: none;
   font-weight: 700;
   color:var(--primary);
-
-  /* opacity: 0.5;   */
-  /* color:var(--secondary); */
 }
 .copy-form button {
   flex: 0 0 20%;
@@ -76,12 +70,11 @@
 .file_top {
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
+
 }
 .card-footer > button {
   outline: none;
   margin: 6px;
-  /* width: 60px; */
   height: 40px;
   border: var(--primary);
   color: var(--primary);
@@ -103,6 +96,12 @@
 .card-footer a {
   text-decoration: none;
 }
+.file_user{
+  color:var(--secondary) !important;
+  text-decoration: underline;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 1.2rem;
+}
 
 .card-body {
   padding: 10px !important;
@@ -112,8 +111,6 @@
 }
 .category {
   display: flex;
-  /* align-items:center; */
-  /* justify-content: space-around; */
 }
 .category h6 {
   border: 1px solid gray;

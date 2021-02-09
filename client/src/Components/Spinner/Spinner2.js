@@ -1,12 +1,12 @@
 import React  from "react";
-import spinner from "./spinner.gif";
+import spinner2 from "./spinner2.gif";
 import './Spinner.css'
 
 
 export default () => (
   <div className="spinner">
     <img
-      src={spinner}
+      src={spinner2}
       alt="Loading..."
     />
   </div>

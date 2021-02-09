@@ -6,6 +6,7 @@ import Avatar from '@material-ui/core/Avatar';
 import { Navbar, Nav, Button } from 'react-bootstrap';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import logo from './org2.png';
+
 function Navigation() {
   const lname = localStorage.getItem('lname');
   const fname = localStorage.getItem('fname');
@@ -19,7 +20,6 @@ function Navigation() {
       switch (array.length) {
         case 1:
           return array[0].charAt(0).toUpperCase();
-          break;
         default:
           return array[0].charAt(0).toUpperCase() + array[array.length - 1].charAt(0).toUpperCase();
       }
@@ -37,10 +37,11 @@ function Navigation() {
   }
 
   const id = localStorage.getItem('id');
- 
+
   const UserHandler = () => {
     history.push(`/wrapper/${id}`);
   };
+
   return (
     <>
       {!localStorage.token ? (
@@ -57,12 +58,12 @@ function Navigation() {
             <Navbar.Brand>
               <img src={logo} alt="StudyGram" />
             </Navbar.Brand>
+           
           </LinkContainer>
           <Nav className="ml-auto">
-            <Avatar className="navigation_userIcon" onClick={UserHandler} >
+            <Avatar className="navigation_userIcon" onClick={UserHandler}>
               {getInitials(name, ' ')}
             </Avatar>
-
             <Button onClick={HandleLogout}>
               Logout <ExitToAppIcon />
             </Button>

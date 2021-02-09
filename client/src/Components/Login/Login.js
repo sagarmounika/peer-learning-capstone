@@ -8,6 +8,7 @@ import PersonIcon from '@material-ui/icons/Person';
 import LockIcon from '@material-ui/icons/Lock';
 import Avatar from '@material-ui/core/Avatar';
 function Login() {
+  
   const [loading, setLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [formData, setFormData] = useState({
@@ -23,23 +24,27 @@ function Login() {
     });
   };
   const loginHandler = async (e) => {
+    setLoading(true);
     e.preventDefault();
     const data = {
       username: username,
       password: password,
     };
-    console.log(data);
+
     await axios
       .post('/user/auth', data)
       .then((response) => {
-        setLoading(true);
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('fname', response.data.firstname);
         localStorage.setItem('lname', response.data.lastname);
         localStorage.setItem('id', response.data.id);
         setIsLoggedIn(true);
+        setLoading(false);
       })
-      .catch((error) => alert('Invalid Credentials'));
+      .catch((error) => {
+        alert('Invalid Credentials');
+        setLoading(false);
+      });
   };
 
   if (isLoggedIn) {

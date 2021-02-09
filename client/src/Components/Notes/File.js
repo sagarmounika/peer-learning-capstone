@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
-// import {Link} from 'react-router-dom'
-import { Card, Overlay, Tooltip, Form, Button, Row, Col } from 'react-bootstrap';
+import { Card, Overlay, Tooltip } from 'react-bootstrap';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import CloudDownloadIcon from '@material-ui/icons/CloudDownload';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
@@ -12,14 +11,12 @@ import ShareIcon from '@material-ui/icons/Share';
 import './File.css';
 
 function File({ file, id, category }) {
-  // console.log(like,file)
+  const history = useHistory();
   const [value, setValue] = useState('');
   const [copied, setCopied] = useState(false);
-  // const [color, setColor] = useState(white);
   const token = localStorage.getItem('token');
   const [like, setLike] = useState(null);
 
-  // console.log(category, file);
   const addLike = async (id) => {
     axios({
       method: 'post',
@@ -29,7 +26,6 @@ function File({ file, id, category }) {
       },
     })
       .then((res) => {
-        // console.log(res);
         return axios({
           method: 'get',
           url: `/resource/${id}`,
@@ -39,36 +35,25 @@ function File({ file, id, category }) {
         });
       })
       .then((response) => {
-        // console.log('Response', response);
         setLike(response.data.likeCount);
-        // const button = e.target.style.Color;
-        // const newbutton = e.target.style.Color;
-        // const newColor = color === white ? pink : white;
-        // setColor(newColor);
       })
       .catch((err) => console.log(err));
   };
-  // useEffect(() => {
-  //   axios({
-  //     method: 'get',
-  //     url: `https://studygram-dev.herokuapp.com/api/resource/${id}`,
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   }).then((response) => {
-  //     console.log('Response', response);
-  //     setLike(response.data.likeCount);
-  //   });
-  // }, [addLike,like]);
-  // const handleDownload = (url, filename) => {
-  //   axios
-  //     .get(url, {
-  //       responseType: 'blob',
-  //     })
-  //     .then((res) => {
-  //       fileDownload(res.data, filename);
-  //     });
-  // };
+  useEffect(() => {
+    axios({
+      method: 'get',
+      url: `/resource/${id}`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((response) => {
+      setLike(response.data.likeCount);
+    });
+  }, [addLike, like]);
+  const profilesHandler = (user) => {
+    history.push(`/wrapper/notes/${user}`);
+  };
+  // 36
   const [show, setShow] = useState(false);
   const target = useRef(null);
   return (
@@ -76,7 +61,6 @@ function File({ file, id, category }) {
       <Card.Header>
         <div className="file_top">
           <h4> {file.title} </h4>
-
           <ShareIcon
             ref={target}
             onClick={() => {
@@ -86,13 +70,12 @@ function File({ file, id, category }) {
             }}
           />
         </div>
-
         <blockquote className="blockquote mb-0 mr-0">
-          <p>Uploaded By {file.user.firstname}</p>
+          <p>
+            Uploaded By <span className="file_user"onClick={()=>{profilesHandler(file.user.username)}}>{file.user.firstname} </span>{' '}
+          </p>
         </blockquote>
       </Card.Header>
-
-      {/* <img src={file.file.webContentLink} /> */}
 
       <Card.Body>
         <div>
@@ -110,7 +93,7 @@ function File({ file, id, category }) {
           }}
         >
           {' '}
-          <ThumbUpAltIcon className="like-icon" /> {like}
+          <ThumbUpAltIcon className="like-icon" /> {like!== 0 && like}
         </button>
 
         <button>
@@ -138,24 +121,18 @@ function File({ file, id, category }) {
       <Overlay target={target.current} show={show} placement="top">
         {(props) => (
           <Tooltip id="overlay-example" {...props}>
-           
-              <div className="copy-form">
-                <input type="text" value={value} />
-                <CopyToClipboard
-                  text={value}
-                  onCopy={() => {
-                    setCopied(true);
-                    console.log(value);
-                  
-                  }}
-                >
-                  <button>
-                    <FileCopyIcon />
-                  </button>
-                </CopyToClipboard>
-            
-
-             
+            <div className="copy-form">
+              <input type="text" value={value} />
+              <CopyToClipboard
+                text={value}
+                onCopy={() => {
+                  setCopied(true);
+                }}
+              >
+                <button>
+                  <FileCopyIcon />
+                </button>
+              </CopyToClipboard>
             </div>
             {copied ? <span style={{ color: 'white' }}>Copied.</span> : null}
           </Tooltip>

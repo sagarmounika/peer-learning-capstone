@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 function AlertDismissible(show) {
   return (
     <>
-   
         <Alert show={show} className="alert-fixed" variant="success">
           <Alert.Heading>Congratulations!</Alert.Heading>
           <p>Your account has been successfully created.</p>

@@ -1,0 +1,65 @@
+.profile {
+  background-image: url(https://images.unsplash.com/photo-1530305408560-82d13781b33a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80);
+  /* color:var(--secondary); */
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  padding: 30px;
+
+  background-size: cover;
+
+  /* overflow-y: hidden !important; */
+}
+.profile_card > h5 {
+  color: red;
+  margin-bottom: 0;
+}
+.profile_card {
+  display: flex;
+  flex-direction: column;
+
+  width: 70%;
+  margin-left: 15%;
+  border: 1px solid var(--secondary);
+  background-color: var(--secondary);
+  border-radius: 10px;
+  box-shadow: 1px 6px 3px var(--secondary) !important;
+
+  /* justify-content: space-between; */
+}
+.profile_card span {
+  text-transform: capitalize;
+  font-weight: 400;
+}
+.profile h3,
+.profile_card > p {
+  text-transform: capitalize;
+  text-align: center;
+  font-weight: 700;
+  padding: 10px;
+}
+
+.profile_btn {
+  border-color: var(--secondary) !important;
+  /* width: 90px; */
+  background-color: var(--secondary) !important;
+  color: var(--primary) !important;
+  text-decoration: none !important;
+  margin: 10px 12px;
+  margin-left: 10px;
+  align-self: flex-start;
+}
+.profile_btn:hover,
+.profile_btn:focus,
+.profile_btn:active {
+  outline: none !important;
+  color: var(--primary) !important;
+  box-shadow: none !important;
+}
+.profile_btn a {
+  text-decoration: none !important;
+  color: var(--primary) !important;
+}
+.profile_card hr {
+  margin-bottom: 4px !important;
+}
